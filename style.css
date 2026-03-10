@@ -1,0 +1,27 @@
+:root {
+    --bg: #0f111a;
+    --card: #1a1c2e;
+    --accent: #cba6f7;
+    --text: #cdd6f4;
+    --success: #a6e3a1;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 20px; margin: 0; }
+.container { max-width: 450px; margin: auto; }
+header { text-align: center; margin-bottom: 20px; }
+#clock { font-size: 2.5em; font-weight: bold; color: var(--accent); }
+
+.section { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #313244; }
+h2 { font-size: 1.1em; color: var(--accent); border-bottom: 1px solid #313244; padding-bottom: 5px; }
+
+.grid-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.p-item { background: #24273a; padding: 8px; border-radius: 6px; font-size: 0.85em; }
+
+.mini-card { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.counter-area { font-size: 1.2em; font-weight: bold; color: var(--success); }
+
+.btn-pray, .btn-main { background: var(--accent); color: #11111b; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.btn-main { width: 100%; margin-top: 10px; }
+
+.task-list label { display: block; margin: 10px 0; font-size: 0.9em; cursor: pointer; }
+.reset-btn { width: 100%; background: none; border: 1px solid #f38ba8; color: #f38ba8; padding: 10px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
