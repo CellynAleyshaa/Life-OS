@@ -1,5 +1,15 @@
 let istigfarCount = parseInt(localStorage.getItem('istigfar')) || 0;
+let currentLevel = parseInt(localStorage.getItem('level')) || 1;
+let currentDay = parseInt(localStorage.getItem('day')) || 1;
 let prayerTimes = {};
+
+// Daftar Task tiap Level
+const levelTasks = {
+    1: { title: "Deep Focus", desc: "Belajar/Coding 20 Menit Tanpa Sosmed." },
+    2: { title: "Digital Detox", desc: "Matikan HP selama 30 menit & baca buku." },
+    3: { title: "Self Care", desc: "Olahraga ringan/stretching selama 10 menit." },
+    4: { title: "Mindfulness", desc: "Meditasi atau dengerin murottal dengan tenang." }
+};
 
 async function getPrayerTimes() {
     try {
@@ -39,18 +49,44 @@ function countIstigfar() {
     }
 }
 
+// Fungsi Level Up
 function completeTask() {
     confetti();
-    alert("Keren, Grace! Level Up!");
+    currentLevel++;
+    if (currentLevel > 4) currentLevel = 1; // Balik ke level 1 kalau sudah tamat
+    
+    localStorage.setItem('level', currentLevel);
+    updateLevelUI();
+    alert("Keren, Grace! Sekarang kamu naik ke Level " + currentLevel);
 }
 
+function updateLevelUI() {
+    const task = levelTasks[currentLevel];
+    document.querySelector('.badge').innerText = `Level ${currentLevel}`;
+    document.querySelector('.card h3').innerText = task.title;
+    document.querySelector('.card p').innerText = task.desc;
+}
+
+// Fungsi Ganti Hari
 function resetSystem() {
-    if(confirm("Reset semua progress?")) {
-        localStorage.clear();
+    if(confirm("Reset progress dan lanjut ke Hari Berikutnya?")) {
+        currentDay++;
+        if (currentDay > 7) currentDay = 1; // Balik ke hari 1 setelah seminggu
+        
+        istigfarCount = 0;
+        currentLevel = 1;
+        
+        localStorage.setItem('day', currentDay);
+        localStorage.setItem('istigfar', 0);
+        localStorage.setItem('level', 1);
+        
         location.reload();
     }
 }
 
+// Inisialisasi awal
 setInterval(updateClock, 1000);
 getPrayerTimes();
+updateLevelUI();
 document.getElementById('istigfar-count').innerText = istigfarCount;
+document.getElementById('day-display').innerText = `Day ${currentDay}`;
