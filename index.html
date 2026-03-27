@@ -2,15 +2,20 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grace's Safe Space</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🌿 Grace's Safe Space</h1>
-            <h3 id="day-display">Day 1</h3> <div id="clock">00:00:00</div>
-            <p>Banyuwangi Edition | Ryzen 5 System</p>
+            <div class="header-info">
+                <h3 id="day-display">Day 1</h3>
+                <div id="clock">00:00:00</div>
+                <p>Banyuwangi Edition | Ryzen 5 System</p>
+            </div>
         </header>
 
         <section class="section">
@@ -26,17 +31,20 @@
 
         <section class="section">
             <h2>✨ Daily Calm</h2>
-            <div class="mini-card">
-                <span>Istigfar (150x)</span>
-                <div class="counter-area"><span id="istigfar-count">0</span>/150</div>
-                <button class="btn-pray" onclick="countIstigfar()">CLICK</button>
+            <div class="istigfar-container">
+                <div class="mini-card">
+                    <span class="label-text">Istigfar (150x)</span>
+                    <div class="counter-area"><span id="istigfar-count">0</span>/150</div>
+                    <button class="btn-pray" onclick="countIstigfar()">CLICK</button>
+                </div>
             </div>
+            
             <div class="task-list">
-                <label><input type="checkbox" id="check-sholat"> Sholat 5 Waktu</label>
-                <label><input type="checkbox" id="check-water"> Minum Air Putih</label>
-                <label><input type="checkbox" id="check-bed"> Rapikan Kasur</label>
-                <label><input type="checkbox" id="check-window"> Lihat Langit 1 Menit</label>
-                <label><input type="checkbox" id="check-journal"> Tulis Perasaan di Notepad</label>
+                <label><input type="checkbox" id="check-sholat"> <span>Sholat 5 Waktu</span></label>
+                <label><input type="checkbox" id="check-water"> <span>Minum Air Putih</span></label>
+                <label><input type="checkbox" id="check-bed"> <span>Rapikan Kasur</span></label>
+                <label><input type="checkbox" id="check-window"> <span>Lihat Langit 1 Menit</span></label>
+                <label><input type="checkbox" id="check-journal"> <span>Tulis Perasaan di Notepad</span></label>
             </div>
         </section>
 
@@ -54,7 +62,6 @@
     </div>
 
     <audio id="adhanAudio" src="https://www.islamcan.com/audio/adhan/azan1.mp3"></audio>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -4,24 +4,178 @@
     --accent: #cba6f7;
     --text: #cdd6f4;
     --success: #a6e3a1;
+    --danger: #f38ba8;
+    --border: #313244;
 }
 
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 20px; margin: 0; }
-.container { max-width: 450px; margin: auto; }
-header { text-align: center; margin-bottom: 20px; }
-#clock { font-size: 2.5em; font-weight: bold; color: var(--accent); }
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
-.section { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #313244; }
-h2 { font-size: 1.1em; color: var(--accent); border-bottom: 1px solid #313244; padding-bottom: 5px; }
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: 'Segoe UI', Roboto, -apple-system, sans-serif; 
+    padding: 15px; 
+    margin: 0; 
+    display: flex;
+    justify-content: center;
+    line-height: 1.5;
+}
 
-.grid-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.p-item { background: #24273a; padding: 8px; border-radius: 6px; font-size: 0.85em; }
+.container { 
+    width: 100%;
+    max-width: 600px; /* Lebar optimal untuk laptop & HP */
+    margin-bottom: 50px;
+}
 
-.mini-card { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.counter-area { font-size: 1.2em; font-weight: bold; color: var(--success); }
+header { 
+    text-align: center; 
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
 
-.btn-pray, .btn-main { background: var(--accent); color: #11111b; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-.btn-main { width: 100%; margin-top: 10px; }
+h1 { font-size: 1.5rem; margin-bottom: 5px; }
 
-.task-list label { display: block; margin: 10px 0; font-size: 0.9em; cursor: pointer; }
-.reset-btn { width: 100%; background: none; border: 1px solid #f38ba8; color: #f38ba8; padding: 10px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+#clock { 
+    /* Font size dinamis: minimal 2rem, maksimal 3.5rem sesuai lebar layar */
+    font-size: clamp(2.2rem, 10vw, 3.5rem); 
+    font-weight: 800; 
+    color: var(--accent); 
+    margin: 10px 0;
+    font-variant-numeric: tabular-nums; /* Biar angka jam gak goyang-goyang */
+}
+
+.section { 
+    background: var(--card); 
+    padding: 20px; 
+    border-radius: 18px; 
+    margin-bottom: 20px; 
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h2 { 
+    font-size: 1.1rem; 
+    color: var(--accent); 
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive Prayer Times Grid */
+.grid-mini { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 10px; 
+}
+
+.p-item { 
+    background: #24273a; 
+    padding: 12px 8px; 
+    border-radius: 12px; 
+    font-size: 0.85rem; 
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+/* Istigfar & Task Layout */
+.mini-card { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px;
+    background: #24273a;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.counter-area {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.task-list label {
+    background: #24273a;
+    padding: 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.2s;
+}
+
+.task-list label:active { transform: scale(0.98); }
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--success);
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-pray { 
+    background: var(--accent); 
+    color: var(--bg); 
+    padding: 10px 18px;
+}
+
+.btn-main { 
+    background: var(--success); 
+    color: var(--bg); 
+    width: 100%; 
+    padding: 16px; 
+    margin-top: 15px;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(166, 227, 161, 0.2);
+}
+
+.badge {
+    background: var(--accent);
+    color: var(--bg);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.reset-btn { 
+    background: transparent; 
+    color: var(--danger); 
+    border: 1px solid var(--danger); 
+    width: 100%; 
+    padding: 12px; 
+    margin-top: 20px;
+    opacity: 0.5;
+}
+
+.reset-btn:hover { opacity: 1; background: rgba(243, 139, 168, 0.1); }
+
+/* Laptop/Desktop Specific Adjustments */
+@media (min-width: 768px) {
+    body { padding: 40px 20px; }
+    .section { padding: 25px; }
+    h1 { font-size: 2rem; }
+}

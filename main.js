@@ -4,7 +4,7 @@ const path = require('path')
 function createWindow () {
   const win = new BrowserWindow({
     width: 500,
-    height: 800,
+    height: 650,
     title: "Grace's Safe Space",
     autoHideMenuBar: true, // Biar gak ada menu File/Edit di atas, jadi bersih
     webPreferences: {
